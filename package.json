@@ -8,7 +8,7 @@
 	"sideEffects": false,
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs,esm --dts --sourcemap",
-		"start": "swc src/index.ts -d dist && node dist/index.js",
+		"start": "swc src/* -d dist && node dist/index.js",
 		"test": "jest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
@@ -35,7 +35,6 @@
 		"url": "https://github.com/web-pacotes/github-upsert/issues"
 	},
 	"homepage": "https://github.com/web-pacotes/github-upsert#readme",
-	"type": "module",
 	"devDependencies": {
 		"@changesets/cli": "^2.26.1",
 		"@jest/globals": "^29.5.0",
