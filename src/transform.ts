@@ -4,9 +4,9 @@ import {
 } from './response';
 
 /**
- * Unmarshalls the response body of a request to fetch a file using GitHub API as a {@link GitHubApiGetFileSuccessReponse} instance, 
+ * Unmarshalls the response body of a request to fetch a file using GitHub API as a {@link GitHubApiGetFileSuccessReponse} instance,
  * if nothing failed in the request.
- * 
+ *
  * @param response - Fetch response received from GitHub API
  * @returns The response model typed as {@link GitHubApiGetFileSuccessReponse} or `undefined` if anything failed.
  */
@@ -21,9 +21,9 @@ export async function transformGetFileResponse(
 }
 
 /**
- * Unmarshalls the response body of a request to upload/update a file using GitHub API as a {@link GitHubApiUpsertFileSuccessReponse} 
+ * Unmarshalls the response body of a request to upload/update a file using GitHub API as a {@link GitHubApiUpsertFileSuccessReponse}
  * instance, if nothing failed in the request.
- * 
+ *
  * @param response - Fetch response received from GitHub API
  * @returns The response model typed as {@link GitHubApiUpsertFileSuccessReponse} or `undefined` if anything failed.
  */

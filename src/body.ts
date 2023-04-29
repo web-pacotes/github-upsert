@@ -1,6 +1,6 @@
 /**
  * Composes the request body for uploading/updating a file on a GitHub repository using GitHub API, as a JSON string.
- * 
+ *
  * @param data - The file content as an array of bytes.
  * @param ref - An (optional) git commit ref/branch in which the file should be upserted.
  * @param sha - If previously existing, the checksum of the old file content.

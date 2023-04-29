@@ -5,7 +5,7 @@ import url from './url';
 
 /**
  * Composes the {@link Request} instance to fetch a file on a GitHub repository using GitHub API.
- * 
+ *
  * @param repo - Information about the repository to fetch the file.
  * @param path - The absolute path that locates the file in the repository.
  * @param ref - An (optional) git commit ref/branch in which the file should be fetched.
@@ -30,7 +30,7 @@ export function getFileRequest(
 
 /**
  * Composes the {@link Request} instance to upload/update a file on a GitHub repository using GitHub API.
- * 
+ *
  * @param repo - Information about the repository to upload/update the file.
  * @param file - The file content to be upserted, encoded at the byte level + the old content checksum in case of an update.
  * @param path - The absolute path that locates the file in the repository.
