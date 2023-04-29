@@ -1,3 +1,5 @@
+import handler from './handler';
+
 /**
  * Adds two signed numbers and returns the result
  * @param a Left operand number
@@ -9,3 +11,18 @@ export function sum(a: number, b: number) {
 }
 
 console.log(sum(40, 2));
+
+// export * as githubUpsert from './handler';
+// export { GitHubRepository } from './model';
+
+handler(
+	{
+		name: 'blablah',
+		owner: 'mentalillnessisveryimportant',
+		pat: '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'
+	},
+	Uint8Array.from([0, 2, 3, 4, 6]),
+	'test.txt'
+)
+	.then(console.log)
+	.catch(console.error);
