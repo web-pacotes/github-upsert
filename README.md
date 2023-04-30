@@ -8,30 +8,50 @@ Upserts file into a GitHub repo
 
 ## How to use
 
-todo: describe usage
+To use this package, you will need a Personal Access Token (PAT) with read/write permissions for the repository you want to upload files in. Create one by going to: `Settings > Developer Settings > Personal Access Tokens`.
 
 ```typescript
-todo: include usage code here
+import { default as upsert, GitHubRepository } from 'github-upsert';
+
+// You can grab your personal access token in: Settings > Developer Settings > Personal Access Tokens
+const repo = <GitHubRepository>{
+    name: 'your-github-repo',
+    owner: 'your-github-username',
+    pat: 'your-github-pat',
+};
+
+const data = new TextEncoder().encode('Hello world!');
+const path = 'README.md';
+
+// Upload it
+const result = await upsert(repo, data, path);
+
+// Hoooraaaay! It should print the SHA checksum of your file!
+console.log(result);
 ```
 
 ## Features
 
-todo: enumerate features package currently provides
+- Uploads/updates a file in a GitHub repository
+- Uses native fetch lib for HTTP requests
 
 ## Missing features
 
-todo: enumerate features package does not provide
+- Support for web/lib fetch
 
 ---
 
 ## Scripts
 
 - `npm run build` to transpile and bundle files in `.cjs`, `.js`, `.d.ts` and respective source-maps
-- `npm run start` to run the project with `swc` compilation
+- `npm run start` to run the example project with `swc` compilation
 
 - `npm run test` to run the unit tests
 - `npm run lint` to analyze and lint the project
 - `npm run format` to format the project based on lint feedback
+
+- `npm run docs` to generate docs site
+- `npm run docs:publish` to generate docs site and publish it to GitHub Pages
 
 - `npm run release` to create the temporary changesets file
 - `npm run publish` to publish the package to NPM
@@ -56,12 +76,3 @@ Found any bug (including typos) in the package? Do you have any suggestion
 or feature to include for future releases? Please create an issue via
 GitHub in order to track each contribution. Also, pull requests are very
 welcome!
-
-### Contact
-
-This template was prepared by:
-
-- João Freitas, @freitzzz
-- Rute Santos, @rutesantos4
-
-Contact us for freelancing work!
