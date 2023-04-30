@@ -1,6 +1,6 @@
 {
 	"name": "@web-pacotes/github-upsert",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Upserts file into a GitHub repo",
 	"main": "dist/index.js",
 	"module": "dist/index.cjs",
