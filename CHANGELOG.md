@@ -1,5 +1,11 @@
 # @web-pacotes/github-upsert
 
+## 0.0.2
+
+### Patch Changes
+
+- 73b7d95: fix badges pointing to incorrect package
+
 ## 0.0.1
 
 ### Patch Changes
