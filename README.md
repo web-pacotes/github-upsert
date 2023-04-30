@@ -15,9 +15,9 @@ import { default as upsert, GitHubRepository } from 'github-upsert';
 
 // You can grab your personal access token in: Settings > Developer Settings > Personal Access Tokens
 const repo = <GitHubRepository>{
-    name: 'your-github-repo',
-    owner: 'your-github-username',
-    pat: 'your-github-pat',
+	name: 'your-github-repo',
+	owner: 'your-github-username',
+	pat: 'your-github-pat'
 };
 
 const data = new TextEncoder().encode('Hello world!');

@@ -1,14 +1,14 @@
 {
-    "name": "github-upsert-example",
-    "version": "0.0.0",
-    "description": "Example project to test github-upsert",
-    "main": "dist/index.js",
-    "module": "dist/index.cjs",
-    "types": "dist/index.d.ts",
-    "sideEffects": false,
-    "author": "web-pacotes",
-    "license": "MIT",
-    "dependencies": {
-        "github-upsert": "file:../"
-    }
+	"name": "github-upsert-example",
+	"version": "0.0.0",
+	"description": "Example project to test github-upsert",
+	"main": "dist/index.js",
+	"module": "dist/index.cjs",
+	"types": "dist/index.d.ts",
+	"sideEffects": false,
+	"author": "web-pacotes",
+	"license": "MIT",
+	"dependencies": {
+		"github-upsert": "file:../"
+	}
 }
