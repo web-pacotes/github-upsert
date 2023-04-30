@@ -6,4 +6,6 @@ ignore
 .env.*
 !.env.example
 
+docs
+
 package-lock.json
