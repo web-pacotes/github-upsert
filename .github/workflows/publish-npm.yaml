@@ -4,7 +4,7 @@ on:
     branches:
       - 'main'
 
-concurrency: $-$
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   publish:
@@ -23,5 +23,5 @@ jobs:
         with:
           publish: npm run publish
         env:
-          GITHUB_TOKEN: $
-          NPM_TOKEN: $
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
