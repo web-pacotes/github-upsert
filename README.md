@@ -2,7 +2,7 @@
 
 Upserts file into a GitHub repo
 
-![npm version](https://badgen.net/npm/v/github-upsert) ![npm total downloads](https://badgen.net/npm/dt/github-upsert) ![bundlephobia bundle size](https://badgen.net/bundlephobia/min/github-upsert)
+![npm version](https://badgen.net/npm/v/@web-pacotes/github-upsert) ![npm total downloads](https://badgen.net/npm/dt/@web-pacotes/github-upsert) ![bundlephobia bundle size](https://badgen.net/bundlephobia/min/@web-pacotes/github-upsert)
 
 ---
 
