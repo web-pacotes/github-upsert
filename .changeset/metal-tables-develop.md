@@ -1,5 +1,5 @@
 ---
-'github-upsert': patch
+'@web-pacotes/github-upsert': patch
 ---
 
 - Initial version of github-upsert
