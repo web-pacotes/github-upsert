@@ -1,2 +1,2 @@
-export * as upsert from './handler';
+export { default } from './handler';
 export * from './model';
