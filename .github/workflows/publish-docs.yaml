@@ -3,6 +3,10 @@ on:
   push:
     tags:
       - '*'
+  workflow_run:
+    workflows: ['Publish to NPM']
+    types:
+      - completed
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
