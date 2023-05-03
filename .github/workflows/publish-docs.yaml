@@ -1,12 +1,7 @@
 name: Publish docs site to GitHub Pages
 on:
-  push:
-    tags:
-      - '*'
-  workflow_run:
-    workflows: ['Publish to NPM']
-    types:
-      - completed
+  repository_dispatch:
+    types: [npm-published]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -21,6 +16,8 @@ jobs:
           cache: 'npm'
 
       - run: npm install --frozen-lockfile
-      - run: npm run docs:publish
+      - run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run docs:publish -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
