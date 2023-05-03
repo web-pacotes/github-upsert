@@ -1,4 +1,4 @@
-import { base64 } from "./encode";
+import { base64 } from './encode';
 
 /**
  * Composes the request body for uploading/updating a file on a GitHub repository using GitHub API, as a JSON string.
