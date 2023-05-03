@@ -1,3 +1,5 @@
+import { base64 } from "./encode";
+
 /**
  * Composes the request body for uploading/updating a file on a GitHub repository using GitHub API, as a JSON string.
  *
@@ -9,7 +11,7 @@
 export function uploadFileBody(data: Uint8Array, ref?: string, sha?: string) {
 	const body = {
 		message: 'commit message',
-		content: Buffer.from(data).toString('base64'),
+		content: base64(data),
 		branch: ref,
 		sha: sha
 	};
