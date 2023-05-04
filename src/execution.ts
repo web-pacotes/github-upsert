@@ -1,1 +1,1 @@
-export const runningOnTheWeb = typeof window !== 'undefined';
+export const runningOnServerSide = typeof Buffer !== 'undefined';
