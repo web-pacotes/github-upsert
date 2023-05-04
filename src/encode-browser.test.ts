@@ -6,11 +6,13 @@ import { expect, test, describe, jest } from '@jest/globals';
 import { base64 } from './encode';
 import { TextDecoder } from 'util';
 
-jest.mock('./execution', () => ({
-	get runningOnServerSide() {
-		return false;
-	}
-}));
+jest.mock('./execution', function () {
+	return {
+		get runningOnServerSide() {
+			return false;
+		}
+	};
+});
 
 describe('encode', function () {
 	describe('base64', function () {
