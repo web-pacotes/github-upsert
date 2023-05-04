@@ -1,4 +1,4 @@
-import { runningOnTheWeb } from './execution';
+import { runningOnServerSide } from './execution';
 
 /**
  * Encodes a {@link Uint8Array} in a Base64 string. Deep down it checks if it's running on server-side (e.g., node)
@@ -9,7 +9,7 @@ import { runningOnTheWeb } from './execution';
  * @returns The Base64 representation of the input byte array
  */
 export function base64(bytes: Uint8Array): string {
-	if (!runningOnTheWeb) {
+	if (runningOnServerSide) {
 		return Buffer.from(bytes).toString('base64');
 	}
 
