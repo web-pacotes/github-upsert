@@ -9,7 +9,7 @@ import { TextDecoder } from 'util';
 jest.mock('./execution', () => ({
 	get runningOnServerSide() {
 		return false;
-	},
+	}
 }));
 
 describe('encode', function () {
