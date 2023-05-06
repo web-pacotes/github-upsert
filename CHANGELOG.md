@@ -1,5 +1,11 @@
 # @web-pacotes/github-upsert
 
+## 0.0.4
+
+### Patch Changes
+
+- ec0e3a7: fixes: bug on execution environment check which didn't allow package to be used in a Cloudflare Workers environment, since window is undefined but Buffer is also undefined
+
 ## 0.0.3
 
 ### Patch Changes
