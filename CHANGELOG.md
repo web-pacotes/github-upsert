@@ -1,5 +1,11 @@
 # @web-pacotes/github-upsert
 
+## 0.0.5
+
+### Patch Changes
+
+- 81caf4f: feat: add support for upserting files within the CLI
+
 ## 0.0.4
 
 ### Patch Changes
