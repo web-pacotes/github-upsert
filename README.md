@@ -30,6 +30,12 @@ const result = await upsert(repo, data, path);
 console.log(result);
 ```
 
+Additionally, you can upsert files within the CLI. Execute the following command for more info:
+
+```bash
+github-upsert --help
+```
+
 ## Features
 
 - Uploads/updates a file in a GitHub repository

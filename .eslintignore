@@ -7,5 +7,6 @@ ignore
 !.env.example
 
 docs
+bin
 
 package-lock.json

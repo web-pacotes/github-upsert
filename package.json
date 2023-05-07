@@ -23,13 +23,11 @@
 	},
 	"keywords": [
 		"typescript",
-		"prettier",
-		"eslint",
-		"jest",
-		"hot",
-		"git",
-		"hooks",
-		"starter"
+		"github",
+		"file uploader",
+		"web",
+		"node",
+		"minimal"
 	],
 	"author": "web-pacotes",
 	"license": "MIT",
@@ -56,5 +54,6 @@
 		"tsup": "^6.7.0",
 		"typedoc": "^0.24.6",
 		"typescript": "^5.0.4"
-	}
+	},
+	"bin": "bin/index.mjs"
 }
