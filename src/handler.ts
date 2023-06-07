@@ -68,7 +68,7 @@ async function upsertGitHubFile(
 			path: path,
 			sha: upsertFileResponse.content.sha,
 			url: upsertFileResponse.content.html_url,
-			raw_url: upsertFileResponse.content.download_url,
+			raw_url: upsertFileResponse.content.download_url
 		};
 	}
 }
