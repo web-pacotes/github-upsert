@@ -45,6 +45,12 @@ const options = {
 		short: 'r',
 		description: 'Absolute path in which the file lives in the repository'
 	},
+	message: {
+		type: 'string',
+		description:
+			'(Optional) message associated to the commit',
+		default: undefined
+	},
 	ref: {
 		type: 'string',
 		description:
@@ -75,8 +81,9 @@ const repository = {
 
 const data = readFileSync(values.path).valueOf();
 const path = values['repo-path'];
+const message = values.message;
 const ref = values.ref;
 
-const result = upsert(repository, data, path, ref);
+const result = upsert(repository, data, path, message, ref);
 
 result.then(console.info).catch(console.error);
