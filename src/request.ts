@@ -34,6 +34,7 @@ export function getFileRequest(
  * @param repo - Information about the repository to upload/update the file.
  * @param file - The file content to be upserted, encoded at the byte level + the old content checksum in case of an update.
  * @param path - The absolute path that locates the file in the repository.
+ * @param message - An (optional) message associated to the commit.
  * @param ref - An (optional) git commit ref/branch in which the file should be upserted.
  * @returns A {@link Request} instance ready to be sent using fetch.
  */
@@ -41,13 +42,14 @@ export function upsertFileRequest(
 	repo: GitHubRepository,
 	file: File & Partial<GithubFile>,
 	path: string,
-	ref?: string
+	message?: string,
+	ref?: string,
 ): Request {
 	const method = 'PUT';
 	const endpoint = url(repo.owner, repo.name, path);
 	const headers = header(repo.pat, repo.owner);
 
-	const data = uploadFileBody(file.data, ref, file.sha);
+	const data = uploadFileBody(file.data, message, ref, file.sha);
 
 	const init = <RequestInit>{
 		method: method,

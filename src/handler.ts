@@ -13,6 +13,7 @@ import {
  * @param repo - A {@link GitHubRepository} model that identifies the repository file will be upserted.
  * @param data - The file content to be upserted, encoded at the byte level.
  * @param path - The absolute path that locates the file in the repository.
+ * @param message - An (optional) message associated to the commit.
  * @param ref - An (optional) git commit ref/branch in which the file should be upserted.
  * @returns A {@link GithubFile} model that identifies the file within GitHub API, or a {@link Response} instance
  * if the fetch/upsert request failed.
@@ -21,6 +22,7 @@ export default async function (
 	repo: GitHubRepository,
 	data: Uint8Array,
 	path: string,
+	message?: string,
 	ref?: string
 ): Promise<GithubFile | undefined> {
 	const githubFile = await getGitHubFile(repo, path);
@@ -29,6 +31,7 @@ export default async function (
 		repo,
 		{ data: data, sha: githubFile?.sha },
 		path,
+		message,
 		ref
 	);
 }
@@ -52,9 +55,10 @@ async function upsertGitHubFile(
 	repo: GitHubRepository,
 	file: File & Partial<GithubFile>,
 	path: string,
+	message?: string,
 	ref?: string
 ): Promise<GithubFile | undefined> {
-	const request = upsertFileRequest(repo, file, path, ref);
+	const request = upsertFileRequest(repo, file, path, message, ref);
 	const response = await fetch(request);
 
 	const upsertFileResponse = await transformUpsertFileResponse(response);
