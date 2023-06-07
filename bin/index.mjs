@@ -47,8 +47,7 @@ const options = {
 	},
 	message: {
 		type: 'string',
-		description:
-			'(Optional) message associated to the commit',
+		description: '(Optional) message associated to the commit',
 		default: undefined
 	},
 	ref: {

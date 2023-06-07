@@ -43,7 +43,7 @@ export function upsertFileRequest(
 	file: File & Partial<GithubFile>,
 	path: string,
 	message?: string,
-	ref?: string,
+	ref?: string
 ): Request {
 	const method = 'PUT';
 	const endpoint = url(repo.owner, repo.name, path);

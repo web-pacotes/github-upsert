@@ -5,5 +5,7 @@ export type GitHubApiGetFileSuccessReponse = {
 export type GitHubApiUpsertFileSuccessReponse = {
 	content: {
 		sha: string;
+		html_url: string;
+		download_url: string;
 	};
 };
