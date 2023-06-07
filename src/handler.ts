@@ -64,6 +64,11 @@ async function upsertGitHubFile(
 	const upsertFileResponse = await transformUpsertFileResponse(response);
 
 	if (upsertFileResponse) {
-		return <GithubFile>{ path: path, sha: upsertFileResponse.content.sha };
+		return <GithubFile>{
+			path: path,
+			sha: upsertFileResponse.content.sha,
+			url: upsertFileResponse.content.html_url,
+			raw_url: upsertFileResponse.content.download_url,
+		};
 	}
 }
