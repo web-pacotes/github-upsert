@@ -28,7 +28,7 @@ type OptionalUpsertParameters = {
  *
  * @param repo - A {@link GitHubRepository} model that identifies the repository file will be upserted.
  * @param file - The file or folder to be upserted.
- * @param path - The absolute path that locates the file in the repository. If a folder is to be upserted, then the path indicates the root 
+ * @param path - The absolute path that locates the file in the repository. If a folder is to be upserted, then the path indicates the root
  * directory where the folder will be inserted.
  * @param message - An (optional) message associated to the commit.
  * @param ref - An (optional) git commit ref/branch in which the file should be upserted.

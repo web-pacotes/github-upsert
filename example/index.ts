@@ -9,7 +9,7 @@ async function main() {
 	};
 
 	const data = new TextEncoder().encode('Hello world!');
-	const file = <File>{ data: data }
+	const file = <File>{ data: data };
 
 	const path = 'README.md';
 
