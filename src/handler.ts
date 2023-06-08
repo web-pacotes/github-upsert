@@ -11,12 +11,12 @@ import {
 	transformUpsertFileResponse
 } from './transform';
 
-type UpsertedCallback = (file: GithubFile) => void
+type UpsertedCallback = (file: GithubFile) => void;
 
 type OptionalUpsertParameters = {
-	message?: string,
-	ref?: string,
-	cb?: (file: GithubFile) => void
+	message?: string;
+	ref?: string;
+	cb?: (file: GithubFile) => void;
 };
 
 /**
@@ -52,7 +52,7 @@ async function upsertFile(
 	file: File,
 	path: string,
 	message?: string,
-	ref?: string,
+	ref?: string
 ): Promise<GithubFile | undefined> {
 	const githubFile = await getGitHubFile(repo, path);
 
@@ -71,7 +71,7 @@ async function upsertFolder(
 	path: string,
 	message?: string,
 	ref?: string,
-	cb?: UpsertedCallback,
+	cb?: UpsertedCallback
 ): Promise<GithubFolder> {
 	const githubFolder = [];
 
@@ -80,7 +80,11 @@ async function upsertFolder(
 	for (const file of folder.files) {
 		const filePath = 'data' in file ? `${folderPath}/${file.name}` : folderPath;
 
-		const upserted = await upsert(repo, file, filePath, { message: message, ref: ref, cb: cb });
+		const upserted = await upsert(repo, file, filePath, {
+			message: message,
+			ref: ref,
+			cb: cb
+		});
 
 		if (!upserted) {
 			continue;

@@ -129,6 +129,10 @@ const path = values['repo-path'];
 const message = values.message;
 const ref = values.ref;
 
-const result = upsert(repository, file, path, { message: message, ref: ref, cb: upsertedCallback });
+const result = upsert(repository, file, path, {
+	message: message,
+	ref: ref,
+	cb: upsertedCallback
+});
 
 result.then(console.info).catch(console.error);
