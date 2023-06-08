@@ -40,7 +40,7 @@ export default async function upsert(
 	repo: GitHubRepository,
 	file: File | Folder,
 	path: string,
-	{ message, ref, cb }: OptionalUpsertParameters
+	{ message, ref, cb }: OptionalUpsertParameters = {}
 ): Promise<GithubFile | GithubFolder | undefined> {
 	if ('files' in file) {
 		return upsertFolder(repo, file, path, message, ref, cb);
