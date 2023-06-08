@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { parseArgs } from 'util';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
 
 import pkg from '../dist/index.js';
 
@@ -78,11 +78,51 @@ const repository = {
 	pat: values.pat
 };
 
-const data = readFileSync(values.path).valueOf();
+if (!existsSync(values.path)) {
+	console.error(`file located at ${values.path} couldn't be found.`);
+
+	process.exit(1);
+}
+
+let file;
+
+if (statSync(values.path).isFile()) {
+	file = { data: readFileSync(values.path).valueOf() };
+} else {
+	function walk(path, parentFolder) {
+		const files = [];
+
+		const dirents = readdirSync(path, { withFileTypes: true, recursive: false });
+		for (const dirent of dirents) {
+
+			if (dirent.isFile()) {
+				const file = {
+					name: dirent.name,
+					data: readFileSync(`${path}/${dirent.name}`),
+				};
+
+				files.push(file);
+			} else {
+				const folder = {
+					parentFolder: parentFolder,
+					name: dirent.name,
+				};
+
+				folder.files = walk(`${path}/${folder.name}`, folder);
+				files.push(folder);
+			}
+		}
+
+		return files;
+	}
+
+	file = { name: values.path.split('/')[0], files: walk(values.path) };
+}
+
 const path = values['repo-path'];
 const message = values.message;
 const ref = values.ref;
 
-const result = upsert(repository, data, path, message, ref);
+const result = upsert(repository, file, path, message, ref);
 
 result.then(console.info).catch(console.error);
