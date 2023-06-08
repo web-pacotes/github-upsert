@@ -41,6 +41,8 @@ github-upsert --help
 ## Features
 
 - Uploads/updates a file in a GitHub repository
+- Upload/update folder in a GitHub repository (with recursive folder support)
+- Agnostic of `io` or file system
 - Uses native fetch lib for HTTP requests
 
 ## Missing features
