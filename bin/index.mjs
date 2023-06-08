@@ -92,20 +92,22 @@ if (statSync(values.path).isFile()) {
 	function walk(path, parentFolder) {
 		const files = [];
 
-		const dirents = readdirSync(path, { withFileTypes: true, recursive: false });
+		const dirents = readdirSync(path, {
+			withFileTypes: true,
+			recursive: false
+		});
 		for (const dirent of dirents) {
-
 			if (dirent.isFile()) {
 				const file = {
 					name: dirent.name,
-					data: readFileSync(`${path}/${dirent.name}`),
+					data: readFileSync(`${path}/${dirent.name}`)
 				};
 
 				files.push(file);
 			} else {
 				const folder = {
 					parentFolder: parentFolder,
-					name: dirent.name,
+					name: dirent.name
 				};
 
 				folder.files = walk(`${path}/${folder.name}`, folder);

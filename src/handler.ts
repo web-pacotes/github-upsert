@@ -1,4 +1,10 @@
-import { File, Folder, GithubFile, GithubFolder, GitHubRepository } from './model';
+import {
+	File,
+	Folder,
+	GithubFile,
+	GithubFolder,
+	GitHubRepository
+} from './model';
 import { getFileRequest, upsertFileRequest } from './request';
 import {
 	transformGetFileResponse,
@@ -9,7 +15,7 @@ import {
  * Upserts a file or folder on a GitHub repository using GitHub HTTP API. This function performs two HTTP requests:
  * - (GET) one to fetch the file on the location to be uploaded, to grab the old file (if one exists before) checksum
  * - (PUT) and one to upload the new file, letting GitHub know that it's an update by passing the old file checksum.
- * 
+ *
  * **Note**: If a folder is to be upserted, the number of requests is multiplied by the number of files and child folders!
  *
  * @param repo - A {@link GitHubRepository} model that identifies the repository file will be upserted.
@@ -27,10 +33,8 @@ export default async function upsert(
 	message?: string,
 	ref?: string
 ): Promise<GithubFile | GithubFolder | undefined> {
-	if ("files" in file) {
-		return upsertFolder(
-			repo, file, path, message, ref,
-		);
+	if ('files' in file) {
+		return upsertFolder(repo, file, path, message, ref);
 	}
 
 	return upsertFile(repo, file, path, message, ref);
@@ -66,21 +70,15 @@ async function upsertFolder(
 	const folderPath = `${path}/${resolveFolderRelativePath(folder)}`;
 
 	for (const file of folder.files) {
-		const filePath = "data" in file ? `${folderPath}/${file.name}` : folderPath;
+		const filePath = 'data' in file ? `${folderPath}/${file.name}` : folderPath;
 
-		const upserted = await upsert(
-			repo,
-			file,
-			filePath,
-			message,
-			ref
-		);
+		const upserted = await upsert(repo, file, filePath, message, ref);
 
 		if (!upserted) {
-			continue
+			continue;
 		}
 
-		if (!("length" in upserted)) {
+		if (!('length' in upserted)) {
 			githubFolder.push(upserted);
 		} else {
 			githubFolder.push(...upserted);

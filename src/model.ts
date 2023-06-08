@@ -14,9 +14,9 @@ export type Folder = {
 	name: string;
 	parent?: Folder;
 	files: (File | Folder)[];
-}
+};
 
 export type File = {
-	name: string,
+	name: string;
 	data: Uint8Array;
-}; 
+};
