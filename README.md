@@ -21,10 +21,12 @@ const repo = <GitHubRepository>{
 };
 
 const data = new TextEncoder().encode('Hello world!');
+const file = <File>{ data: data };
+
 const path = 'README.md';
 
 // Upload it
-const result = await upsert(repo, data, path);
+const result = await upsert(repo, file, path);
 
 // Hoooraaaay! It should print the SHA checksum of your file!
 console.log(result);
