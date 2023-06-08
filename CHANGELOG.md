@@ -1,5 +1,12 @@
 # @web-pacotes/github-upsert
 
+## 0.0.6
+
+### Patch Changes
+
+- 65a7cbd: - show url and raw content url for each that has been supported
+  - added support for upserting a folder (with recursive support)
+
 ## 0.0.5
 
 ### Patch Changes
