@@ -121,10 +121,14 @@ if (statSync(values.path).isFile()) {
 	file = { name: values.path.split('/')[0], files: walk(values.path) };
 }
 
+function upsertedCallback(file) {
+	console.info(`> upserted: ${file.path}`);
+}
+
 const path = values['repo-path'];
 const message = values.message;
 const ref = values.ref;
 
-const result = upsert(repository, file, path, message, ref);
+const result = upsert(repository, file, path, { message: message, ref: ref, cb: upsertedCallback });
 
 result.then(console.info).catch(console.error);

@@ -11,6 +11,14 @@ import {
 	transformUpsertFileResponse
 } from './transform';
 
+type UpsertedCallback = (file: GithubFile) => void
+
+type OptionalUpsertParameters = {
+	message?: string,
+	ref?: string,
+	cb?: (file: GithubFile) => void
+};
+
 /**
  * Upserts a file or folder on a GitHub repository using GitHub HTTP API. This function performs two HTTP requests:
  * - (GET) one to fetch the file on the location to be uploaded, to grab the old file (if one exists before) checksum
@@ -30,11 +38,10 @@ export default async function upsert(
 	repo: GitHubRepository,
 	file: File | Folder,
 	path: string,
-	message?: string,
-	ref?: string
+	{ message, ref, cb }: OptionalUpsertParameters
 ): Promise<GithubFile | GithubFolder | undefined> {
 	if ('files' in file) {
-		return upsertFolder(repo, file, path, message, ref);
+		return upsertFolder(repo, file, path, message, ref, cb);
 	}
 
 	return upsertFile(repo, file, path, message, ref);
@@ -45,7 +52,7 @@ async function upsertFile(
 	file: File,
 	path: string,
 	message?: string,
-	ref?: string
+	ref?: string,
 ): Promise<GithubFile | undefined> {
 	const githubFile = await getGitHubFile(repo, path);
 
@@ -63,7 +70,8 @@ async function upsertFolder(
 	folder: Folder,
 	path: string,
 	message?: string,
-	ref?: string
+	ref?: string,
+	cb?: UpsertedCallback,
 ): Promise<GithubFolder> {
 	const githubFolder = [];
 
@@ -72,7 +80,7 @@ async function upsertFolder(
 	for (const file of folder.files) {
 		const filePath = 'data' in file ? `${folderPath}/${file.name}` : folderPath;
 
-		const upserted = await upsert(repo, file, filePath, message, ref);
+		const upserted = await upsert(repo, file, filePath, { message: message, ref: ref, cb: cb });
 
 		if (!upserted) {
 			continue;
@@ -80,6 +88,8 @@ async function upsertFolder(
 
 		if (!('length' in upserted)) {
 			githubFolder.push(upserted);
+
+			cb?.(upserted);
 		} else {
 			githubFolder.push(...upserted);
 		}
