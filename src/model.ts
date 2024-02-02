@@ -6,6 +6,7 @@ export type GitHubRepository = {
 
 export type GithubFile = {
 	sha: string;
+	blob: string;
 };
 
 export type GithubFolder = GithubFile[];

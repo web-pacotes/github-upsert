@@ -115,7 +115,7 @@ async function getGitHubFile(
 	const getFileResponse = await transformGetFileResponse(response);
 
 	if (getFileResponse) {
-		return <GithubFile>{ path: path, sha: getFileResponse.sha };
+		return <GithubFile>{ path: path, sha: getFileResponse.sha, blob: ref };
 	}
 }
 
@@ -136,7 +136,8 @@ async function upsertGitHubFile(
 			path: path,
 			sha: upsertFileResponse.content.sha,
 			url: upsertFileResponse.content.html_url,
-			raw_url: upsertFileResponse.content.download_url
+			raw_url: upsertFileResponse.content.download_url,
+			blob: upsertFileResponse.commit.sha
 		};
 	}
 }
