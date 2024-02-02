@@ -1,5 +1,11 @@
 # @web-pacotes/github-upsert
 
+## 0.0.7
+
+### Patch Changes
+
+- 947c14f: feat: add support for getting commit blob for file upsert
+
 ## 0.0.6
 
 ### Patch Changes
