@@ -137,7 +137,7 @@ async function upsertGitHubFile(
 			sha: upsertFileResponse.content.sha,
 			url: upsertFileResponse.content.html_url,
 			raw_url: upsertFileResponse.content.download_url,
-			blob: upsertFileResponse.commit.sha,
+			blob: upsertFileResponse.commit.sha
 		};
 	}
 }
