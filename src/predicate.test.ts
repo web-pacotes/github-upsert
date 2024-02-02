@@ -1,5 +1,4 @@
-import { expect, test, describe, jest } from '@jest/globals';
-import { base64 } from './encode';
+import { expect, test, describe } from '@jest/globals';
 import { GithubFile, GithubFolder } from './model';
 import { isGitHubFile } from './predicate';
 
