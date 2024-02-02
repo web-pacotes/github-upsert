@@ -1,5 +1,11 @@
 # @web-pacotes/github-upsert
 
+## 0.0.8
+
+### Patch Changes
+
+- 6a743a6: fix: missing predicate.ts export
+
 ## 0.0.7
 
 ### Patch Changes
